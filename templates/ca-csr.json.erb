@@ -1,0 +1,22 @@
+{
+  "CN": "<%= @common_name %>",
+  "key": {
+    "algo": "<%= @key_algo %>",
+    "size": <%= @key_size %>
+  },
+  "names": [
+    {
+      "C": "<%= @country %>",
+      "ST": "<%= @state %>",
+      "L": "<%= @city %>",
+      "O": "<%= @organization %>",
+      "OU": "<%= @org_unit %>"
+    }
+  ]
+  <%- if @ca_expire -%>
+  ,
+  "ca": {
+    "expiry": "<%= @ca_expire %>"
+  }
+  <%- end -%>
+}

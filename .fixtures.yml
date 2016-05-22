@@ -1,0 +1,8 @@
+fixtures:
+  forge_modules:
+    stdlib:
+      repo: "puppetlabs/stdlib"
+    wget:
+      repo: "maestrodev/wget"
+  symlinks:
+    cfssl: "#{source_dir}"

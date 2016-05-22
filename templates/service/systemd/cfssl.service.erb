@@ -1,0 +1,18 @@
+[Unit]
+Description=CloudFlare SSL Server Daemon
+After=network-online.target
+
+[Service]
+Type=simple
+User=<%= @service_user %>
+Group=<%= @service_user %>
+UMask=007
+
+ExecStart=<%= @install_dir %>/cfssl serve -address <%= @service_address %> -port <%= @service_port %> -ca <%= @conf_dir %>/<%= @intermediate_ca_id %>-signed.pem -ca-key <%= @conf_dir %>/<%= @intermediate_ca_id %>-key.pem -ca-bundle <%= @conf_dir %>/chain.pem -config <%= @conf_dir %>/signing.json
+
+Restart=on-failure
+
+TimeoutStopSec=300
+
+[Install]
+WantedBy=multi-user.target
