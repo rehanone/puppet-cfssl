@@ -8,7 +8,7 @@ class cfssl (
   $certs_dir      = $cfssl::params::certs_dir,
 
   $ca_manage      = $cfssl::params::ca_manage,
-  $key_algo       = $cfssl::params::key_algo,
+  Enum['ecdsa', 'rsa'] $key_algo       = $cfssl::params::key_algo,
   $key_size       = $cfssl::params::key_size,
   $root_ca_id     = $cfssl::params::root_ca_id,
   $root_ca_name   = $cfssl::params::root_ca_name,
@@ -42,7 +42,6 @@ class cfssl (
   validate_string($certs_dir)
 
   validate_bool($ca_manage)
-  validate_string($key_algo)
   validate_integer($key_size)
   validate_string($root_ca_id)
   validate_string($root_ca_name)

@@ -15,7 +15,7 @@ define cfssl::ca (
 
   validate_string($common_name)
   validate_string($key_algo)
-  validate_string($key_size)
+  validate_integer($key_size)
   validate_string($ca_expire)
   validate_string($country)
   validate_string($state)
