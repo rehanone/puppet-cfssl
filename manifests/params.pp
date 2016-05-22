@@ -39,7 +39,7 @@ class cfssl::params {
 
   $service_manage   = $ca_manage
   $service_ensure   = 'running'
-  $service_enable   = 'true'
+  $service_enable   = true
   $service_name     = 'cfssl'
   $service_address  = '127.0.0.1'
   $service_port     = 8888

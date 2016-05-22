@@ -23,7 +23,7 @@ class cfssl (
   $org_unit         = $cfssl::params::org_unit,
   $service_manage   = $cfssl::params::service_manage,
   $service_ensure   = $cfssl::params::service_ensure,
-  $service_enable   = $cfssl::params::service_enable,
+  Variant[ Enum['mask', 'manual'], Boolean] $service_enable   = $cfssl::params::service_enable,
   $service_name     = $cfssl::params::service_name,
   $service_address  = $cfssl::params::service_address,
   $service_port     = $cfssl::params::service_port,
@@ -58,7 +58,6 @@ class cfssl (
 
   validate_bool($service_manage)
   validate_re($service_ensure, [ '^running', '^stopped' ], 'service_ensure parameter must be running or stopped')
-  validate_re($service_enable, [ '^true', '^false', '^mask', '^manual' ], 'service_enable parameter must be true, false, mask or manual')
   validate_string($service_name)
   validate_string($service_user)
   validate_bool($firewall_manage)
