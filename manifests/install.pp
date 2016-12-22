@@ -2,8 +2,6 @@ class cfssl::install inherits cfssl {
 
   assert_private("Use of private class ${name} by ${caller_module_name}")
 
-  contain wget
-
   file { $cfssl::download_dir:
     ensure => directory,
     owner  => 'root',
@@ -11,12 +9,20 @@ class cfssl::install inherits cfssl {
     mode   => '0755',
   }
 
+  if ! defined(Package['wget']) {
+    ensure_packages(['wget'])
+  }
+
+  contain ::archive
+
   $cfssl::binaries.each |$key, $value| {
-    wget::fetch { "${cfssl::download_url}/${value}":
-      destination => "${cfssl::download_dir}/${value}",
-      verbose     => true,
-      mode        => '0755',
-      require     => File[ $cfssl::download_dir ],
+    archive { "${cfssl::download_dir}/${value}":
+      ensure       => present,
+      extract      => false,
+      extract_path => $cfssl::download_dir,
+      source       => "${cfssl::download_url}/${value}",
+      creates      => "${cfssl::download_dir}/${value}",
+      require      => [ File[ $cfssl::download_dir ], Package['wget'] ],
     }
     ->
     file { "${cfssl::download_dir}/${value}":

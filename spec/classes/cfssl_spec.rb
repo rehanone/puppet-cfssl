@@ -3,6 +3,7 @@ require 'spec_helper'
 describe 'cfssl' do
 
   let(:facts) { {
+    :osfamily => 'Debian',
     :operatingsystem => 'Ubuntu',
     :kernel => 'Linux'
   } }

@@ -2,7 +2,7 @@ fixtures:
   forge_modules:
     stdlib:
       repo: "puppetlabs/stdlib"
-    wget:
-      repo: "maestrodev/wget"
+    archive:
+      repo: "puppet/archive"
   symlinks:
     cfssl: "#{source_dir}"
