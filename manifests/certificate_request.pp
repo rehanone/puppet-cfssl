@@ -1,31 +1,17 @@
 define cfssl::certificate_request (
-  $profile,
-  $hosts,
-  $remote_address,
-  $remote_port    = $cfssl::service_port,
-  $common_name    = $title,
-  $key_algo       = $cfssl::key_algo,
-  $key_size       = $cfssl::key_size,
-  $country        = $cfssl::country,
-  $state          = $cfssl::state,
-  $city           = $cfssl::city,
-  $organization   = $cfssl::organization,
-  $org_unit       = $cfssl::org_unit,
+  Enum['ca', 'server', 'client'] $profile,
+  Array[String]                  $hosts,
+  String                         $remote_address,
+  Integer[0]                     $remote_port    = $cfssl::service_port,
+  String                         $common_name    = $title,
+  Enum['ecdsa', 'rsa']           $key_algo       = $cfssl::key_algo,
+  Integer[0]                     $key_size       = $cfssl::key_size,
+  String[2]                      $country        = $cfssl::country,
+  String                         $state          = $cfssl::state,
+  String                         $city           = $cfssl::city,
+  String                         $organization   = $cfssl::organization,
+  String                         $org_unit       = $cfssl::org_unit,
 ) {
-
-  validate_string($common_name)
-  validate_string($key_algo)
-  validate_string($key_size)
-  validate_string($country)
-  validate_string($state)
-  validate_string($city)
-  validate_string($organization)
-  validate_string($org_unit)
-
-  validate_integer($remote_port)
-  validate_string($remote_address)
-  validate_re($profile, [ '^ca', '^server', '^client' ], 'profile parameter must be ca, server or client')
-  validate_array($hosts)
 
   file { "${cfssl::conf_dir}/${common_name}-csr.json":
     ensure  => present,
