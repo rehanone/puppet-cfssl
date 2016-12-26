@@ -67,6 +67,7 @@ class{ 'cfssl':
 
 ##### Parameters
 
+* **wget_manage**: This module use `wget` to download the cfssl binaries. By default this module uses [rehan-wget](https://forge.puppet.com/rehan/wget) to manage `wget` installation. That behaviour can be disabled with this option.
 * **download_url**: Download URL for cfssl binaries, the default is https://pkg.cfssl.org/R1.2.
 * **download_dir**: Download loaction for cfssl binaries. The default value `/opt/cfssl`.
 * **install_dir**: Install location for cfssl binaries. The default is `/usr/local/bin`.
