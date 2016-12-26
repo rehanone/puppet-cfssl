@@ -1,6 +1,7 @@
   # Class: cfssl::params
 #
 class cfssl::params {
+  $wget_manage      = true
   $download_url     = 'https://pkg.cfssl.org/R1.2'
   $download_dir     = '/opt/cfssl'
   $install_dir      = '/usr/local/bin'

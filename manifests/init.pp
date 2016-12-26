@@ -1,5 +1,6 @@
 
 class cfssl (
+  Boolean               $wget_manage    = $cfssl::params::wget_manage,
   Stdlib::Httpsurl      $download_url   = $cfssl::params::download_url,
   Stdlib::Absolutepath  $download_dir   = $cfssl::params::download_dir,
   Stdlib::Absolutepath  $install_dir    = $cfssl::params::install_dir,
@@ -8,7 +9,7 @@ class cfssl (
   Stdlib::Absolutepath  $certs_dir      = $cfssl::params::certs_dir,
 
   Boolean               $ca_manage      = $cfssl::params::ca_manage,
-  Enum['ecdsa', 'rsa']  $key_algo       = $cfssl::params::key_algo,
+  Enum[ecdsa, rsa]      $key_algo       = $cfssl::params::key_algo,
   Integer[0]            $key_size       = $cfssl::params::key_size,
   String                $root_ca_id     = $cfssl::params::root_ca_id,
   String                $root_ca_name   = $cfssl::params::root_ca_name,
@@ -22,9 +23,9 @@ class cfssl (
   String                $organization     = $cfssl::params::organization,
   String                $org_unit         = $cfssl::params::org_unit,
   Boolean               $service_manage   = $cfssl::params::service_manage,
-  Enum['stopped', 'running']
+  Enum[stopped, running]
                         $service_ensure   = $cfssl::params::service_ensure,
-  Variant[Enum['mask', 'manual'], Boolean]
+  Variant[Enum[mask, manual], Boolean]
                         $service_enable   = $cfssl::params::service_enable,
   String                $service_name     = $cfssl::params::service_name,
   String                $service_address  = $cfssl::params::service_address,

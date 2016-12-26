@@ -9,20 +9,16 @@ class cfssl::install inherits cfssl {
     mode   => '0755',
   }
 
-  if ! defined(Package['wget']) {
-    ensure_packages(['wget'])
+  if $cfssl::wget_manage {
+    require ::wget
   }
 
-  contain ::archive
-
   $cfssl::binaries.each |$key, $value| {
-    archive { "${cfssl::download_dir}/${value}":
-      ensure       => present,
-      extract      => false,
-      extract_path => $cfssl::download_dir,
-      source       => "${cfssl::download_url}/${value}",
-      creates      => "${cfssl::download_dir}/${value}",
-      require      => [ File[ $cfssl::download_dir ], Package['wget'] ],
+    wget::retrieve { "${cfssl::download_url}/${value}":
+      destination => "${cfssl::download_dir}/${value}",
+      verbose     => true,
+      mode        => '0755',
+      require     => File[ $cfssl::download_dir ],
     }
     ->
     file { "${cfssl::download_dir}/${value}":

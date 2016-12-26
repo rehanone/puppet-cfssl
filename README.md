@@ -170,10 +170,10 @@ cfssl::certificate_request { 'example.com':
 ## Dependencies
 
 * [stdlib][1]
-* [archive][2]
+* [wget][2]
 
 [1]:https://forge.puppet.com/puppetlabs/stdlib
-[2]:https://forge.puppet.com/puppet/archive
+[2]:https://forge.puppet.com/rehan/wget
 
 ## Development
 

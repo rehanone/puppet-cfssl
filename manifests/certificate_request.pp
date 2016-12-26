@@ -1,16 +1,16 @@
 define cfssl::certificate_request (
-  Enum['ca', 'server', 'client'] $profile,
-  Array[String]                  $hosts,
-  String                         $remote_address,
-  Integer[0]                     $remote_port    = $cfssl::service_port,
-  String                         $common_name    = $title,
-  Enum['ecdsa', 'rsa']           $key_algo       = $cfssl::key_algo,
-  Integer[0]                     $key_size       = $cfssl::key_size,
-  String[2]                      $country        = $cfssl::country,
-  String                         $state          = $cfssl::state,
-  String                         $city           = $cfssl::city,
-  String                         $organization   = $cfssl::organization,
-  String                         $org_unit       = $cfssl::org_unit,
+  Enum[ca, server, client] $profile,
+  Array[String]            $hosts,
+  String                   $remote_address,
+  Integer[0]               $remote_port    = $cfssl::service_port,
+  String                   $common_name    = $title,
+  Enum[ecdsa, rsa]         $key_algo       = $cfssl::key_algo,
+  Integer[0]               $key_size       = $cfssl::key_size,
+  String[2]                $country        = $cfssl::country,
+  String                   $state          = $cfssl::state,
+  String                   $city           = $cfssl::city,
+  String                   $organization   = $cfssl::organization,
+  String                   $org_unit       = $cfssl::org_unit,
 ) {
 
   file { "${cfssl::conf_dir}/${common_name}-csr.json":

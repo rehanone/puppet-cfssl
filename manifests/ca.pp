@@ -1,27 +1,17 @@
 define cfssl::ca (
-  $ensure       = present,
-  $common_name  = $name,
-  $key_algo     = $cfssl::key_algo,
-  $key_size     = $cfssl::key_size,
-  $ca_expire    = $cfssl::root_ca_expire,
-  $country      = $cfssl::country,
-  $state        = $cfssl::state,
-  $city         = $cfssl::city,
-  $organization = $cfssl::organization,
-  $org_unit     = $cfssl::org_unit,
+  String  $ensure       = present,
+  String  $common_name  = $name,
+  String  $key_algo     = $cfssl::key_algo,
+  Integer $key_size     = $cfssl::key_size,
+  String  $ca_expire    = $cfssl::root_ca_expire,
+  String  $country      = $cfssl::country,
+  String  $state        = $cfssl::state,
+  String  $city         = $cfssl::city,
+  String  $organization = $cfssl::organization,
+  String  $org_unit     = $cfssl::org_unit,
 ) {
 
   assert_private("Use of private class ${name} by ${caller_module_name}")
-
-  validate_string($common_name)
-  validate_string($key_algo)
-  validate_integer($key_size)
-  validate_string($ca_expire)
-  validate_string($country)
-  validate_string($state)
-  validate_string($city)
-  validate_string($organization)
-  validate_string($org_unit)
 
   file { "${cfssl::conf_dir}/${title}-csr.json":
     ensure  => $ensure,
