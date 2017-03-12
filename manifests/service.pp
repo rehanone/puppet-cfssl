@@ -30,6 +30,16 @@ class cfssl::service () inherits cfssl {
           content => template("${module_name}/service/systemd/cfssl.service.erb"),
         }
       }
+      'redhat': {
+        file { "add-${cfssl::service_name}-conf":
+          ensure  => file,
+          path    => "/etc/rc.d/init.d/${cfssl::service_name}",
+          owner   => 'root',
+          group   => 'root',
+          mode    => '0755',
+          content => template("${module_name}/service/redhat/cfssl.erb"),
+        }
+      }
       default: { }
     }
 
