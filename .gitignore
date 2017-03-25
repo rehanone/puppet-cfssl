@@ -15,6 +15,7 @@ log/
 .idea/
 .metadata
 *.iml
+*.project
 .*.sw[op]
 .yardoc
 .yardwarns
