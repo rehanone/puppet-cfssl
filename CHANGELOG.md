@@ -1,8 +1,16 @@
+## 1.1.0 (March 25, 2017)
+
+Bugfixes:
+
+  - Correct detection and support for System V based init service provider in RHEL 6 (Contributed by [Lucas Emery](https://github.com/bt-lemery)).
+  - Remove support for RedHat, CentOS and Scientific Linux version 5.
+  - Updated [rehan-wget](https://forge.puppet.com/rehan/wget) dependency version.
+
 ## 1.0.0 (December 26, 2016)
 
 Features:
 
-  - Add support for RedHad, CentOS and Scientific Linux from version 5 to 7. This includes updates from Official Nginx channel for both stable and mainline builds.
+  - Add support for RedHat, CentOS and Scientific Linux from version 5 to 7.
   - Introduce proper Puppet 4 types for parameters.
   - Remove legacy validate statements of puppet-stdlib module.
   - Increased unit and acceptance tests coverage.
