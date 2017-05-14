@@ -1,3 +1,13 @@
+## 1.1.1 (May 14, 2017)
+
+Features:
+
+  - Improved test coverage.
+
+Bugfixes:
+
+  - Fix the style issues in chaining arrows.
+
 ## 1.1.0 (March 25, 2017)
 
 Bugfixes:
@@ -22,5 +32,4 @@ Features:
 
   - Initial release
 
-Bugfixes:
 
