@@ -20,15 +20,13 @@ class cfssl::install inherits cfssl {
       mode        => '0755',
       require     => File[ $cfssl::download_dir ],
     }
-    ->
-    file { "${cfssl::download_dir}/${value}":
+    -> file { "${cfssl::download_dir}/${value}":
       ensure => file,
       owner  => 'root',
       group  => 'root',
       mode   => '0755',
     }
-    ->
-    file { "${cfssl::install_dir}/${key}":
+    -> file { "${cfssl::install_dir}/${key}":
       ensure => link,
       owner  => 'root',
       group  => 'root',

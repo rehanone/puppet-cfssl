@@ -36,10 +36,10 @@ class cfssl (
   Hash                  $requests         = hiera_hash('cfssl::requests', {}),
 ) inherits cfssl::params {
 
-  anchor { "${module_name}::begin": } ->
-    class { "${module_name}::install": } ->
-    class { "${module_name}::config": } ~>
-    class { "${module_name}::service": } ->
-    class { "${module_name}::firewall": } ->
-  anchor { "${module_name}::end": }
+  anchor { "${module_name}::begin": }
+  -> class { "${module_name}::install": }
+  -> class { "${module_name}::config": }
+  ~> class { "${module_name}::service": }
+  -> class { "${module_name}::firewall": }
+  -> anchor { "${module_name}::end": }
 }
