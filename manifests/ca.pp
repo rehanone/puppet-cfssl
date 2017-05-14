@@ -15,7 +15,18 @@ define cfssl::ca (
 
   file { "${cfssl::conf_dir}/${title}-csr.json":
     ensure  => $ensure,
-    content => template("${module_name}/ca-csr.json.erb"),
+    content => epp("${module_name}/ca-csr.json.epp",
+      {
+        'key_algo'     => $key_algo,
+        'key_size'     => $key_size,
+        'common_name'  => $common_name,
+        'country'      => $country,
+        'state'        => $state,
+        'city'         => $city,
+        'organization' => $organization,
+        'org_unit'     => $org_unit,
+        'ca_expire'    => $ca_expire,
+      }),
   }
 
   if $ensure == present {

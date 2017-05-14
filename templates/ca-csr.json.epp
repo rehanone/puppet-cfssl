@@ -1,0 +1,32 @@
+<%- | Enum[ecdsa, rsa] $key_algo,
+      Integer[0]       $key_size,
+      String           $common_name,
+      String           $country,
+      String           $state,
+      String           $city,
+      String           $organization,
+      String           $org_unit,
+      Optional[String] $ca_expire = undef
+| -%>
+{
+  "CN": "<%= $common_name %>",
+  "key": {
+    "algo": "<%= $key_algo %>",
+    "size": <%= $key_size %>
+  },
+  "names": [
+    {
+      "C": "<%= $country %>",
+      "ST": "<%= $state %>",
+      "L": "<%= $city %>",
+      "O": "<%= $organization %>",
+      "OU": "<%= $org_unit %>"
+    }
+  ]
+  <% if $ca_expire { -%>
+  ,
+  "ca": {
+    "expiry": "<%= $ca_expire %>"
+  }
+  <% } -%>
+}

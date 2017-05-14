@@ -4,6 +4,15 @@ class cfssl::service () inherits cfssl {
 
   if $cfssl::service_manage {
 
+    $service_attributes = {
+      'conf_dir'           => $cfssl::conf_dir,
+      'install_dir'        => $cfssl::install_dir,
+      'service_user'       => $cfssl::service_user,
+      'service_address'    => $cfssl::service_address,
+      'service_port'       => $cfssl::service_port,
+      'intermediate_ca_id' => $cfssl::intermediate_ca_id,
+    }
+
     case $::service_provider {
       'upstart': {
         file { "add-${cfssl::service_name}-conf":
@@ -12,7 +21,7 @@ class cfssl::service () inherits cfssl {
           owner   => 'root',
           group   => 'root',
           mode    => '0644',
-          content => template("${module_name}/service/upstart/cfssl.conf.erb"),
+          content => epp("${module_name}/service/upstart/cfssl.conf.epp", $service_attributes),
         }
       }
       'systemd': {
@@ -27,7 +36,7 @@ class cfssl::service () inherits cfssl {
           owner   => 'root',
           group   => 'root',
           mode    => '0644',
-          content => template("${module_name}/service/systemd/cfssl.service.erb"),
+          content => epp("${module_name}/service/systemd/cfssl.service.epp", $service_attributes),
         }
       }
       'redhat': {
@@ -37,7 +46,7 @@ class cfssl::service () inherits cfssl {
           owner   => 'root',
           group   => 'root',
           mode    => '0755',
-          content => template("${module_name}/service/redhat/cfssl.erb"),
+          content => epp("${module_name}/service/redhat/cfssl.epp", $service_attributes),
         }
       }
       default: { }
