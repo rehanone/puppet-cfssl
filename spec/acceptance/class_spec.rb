@@ -15,6 +15,10 @@ describe 'cfssl class:', :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamil
     end
   end
 
+  before do
+    shell "rm -fv /etc/cfssl/*"
+  end
+
   context 'ca_manage => true:' do
     it 'runs successfully' do
       pp = "class { 'cfssl': ca_manage => true }"
@@ -22,6 +26,21 @@ describe 'cfssl class:', :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamil
       apply_manifest(pp, :catch_failures => true) do |r|
         expect(r.stderr).not_to match(/error/i)
       end
+
+      shell('test -e /etc/cfssl/ca.csr')
+      shell('test -e /etc/cfssl/ca-csr.json')
+      shell('test -e /etc/cfssl/ca-key.pem')
+      shell('test -e /etc/cfssl/ca.pem')
+      shell('test -e /etc/cfssl/chain.pem')
+
+      shell('test -e /etc/cfssl/signing.json')
+
+      shell('test -e /etc/cfssl/intermediate-ca.csr')
+      shell('test -e /etc/cfssl/intermediate-ca-csr.json')
+      shell('test -e /etc/cfssl/intermediate-ca-key.pem')
+      shell('test -e /etc/cfssl/intermediate-ca.pem')
+      shell('test -e /etc/cfssl/intermediate-ca-signed.csr')
+      shell('test -e /etc/cfssl/intermediate-ca-signed.pem')
     end
   end
 
@@ -36,6 +55,7 @@ describe 'cfssl class:', :unless => UNSUPPORTED_PLATFORMS.include?(fact('osfamil
       apply_manifest(pp, :catch_failures => true) do |r|
         expect(r.stderr).not_to match(/error/i)
       end
+
     end
   end
 

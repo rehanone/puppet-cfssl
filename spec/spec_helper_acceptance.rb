@@ -11,8 +11,8 @@ unless ENV['RS_PROVISION'] == 'no' or ENV['BEAKER_provision'] == 'no'
     environmentpath = host.puppet['environmentpath']
     environmentpath = environmentpath.split(':').first if environmentpath
 
-    on host, puppet('module install puppetlabs-stdlib --version 4.16.0')
-    on host, puppet('module install rehan-wget --version 1.1.2')
+    on host, puppet('module install puppetlabs-stdlib --version 4.17.0')
+    on host, puppet('module install rehan-wget --version 1.1.3')
   end
 end
 
