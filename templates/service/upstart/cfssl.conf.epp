@@ -1,0 +1,11 @@
+<%- | Stdlib::Absolutepath  $conf_dir,
+      Stdlib::Absolutepath  $install_dir,
+      String                $service_user,
+      String                $service_address,
+      Integer[0]            $service_port,
+      String                $intermediate_ca_id
+| -%>
+start on (filesystem and networking) or runlevel [2345]
+stop on runlevel [016]
+
+exec <%= $install_dir %>/cfssl serve -address <%= $service_address %> -port <%= $service_port %> -ca <%= $conf_dir %>/<%= $intermediate_ca_id %>-signed.pem -ca-key <%= $conf_dir %>/<%= $intermediate_ca_id %>-key.pem -ca-bundle <%= $conf_dir %>/chain.pem -config <%= $conf_dir %>/signing.json

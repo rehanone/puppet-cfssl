@@ -15,7 +15,17 @@ define cfssl::certificate_request (
 
   file { "${cfssl::conf_dir}/${common_name}-csr.json":
     ensure  => present,
-    content => template("${module_name}/ca-csr.json.erb"),
+    content => epp("${module_name}/ca-csr.json.epp",
+      {
+        'key_algo'     => $key_algo,
+        'key_size'     => $key_size,
+        'common_name'  => $common_name,
+        'country'      => $country,
+        'state'        => $state,
+        'city'         => $city,
+        'organization' => $organization,
+        'org_unit'     => $org_unit
+      }),
   }
 
   exec { "req-${common_name}":
