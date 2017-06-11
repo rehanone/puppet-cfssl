@@ -1,3 +1,10 @@
+## 1.2.0 (June 11, 2017)
+
+Improvements:
+
+  - Replace deprecated `hiera_hash` to `lookup`.
+  - Update minimum puppet version required is set to `4.7.0`.
+
 ## 1.1.1 (May 14, 2017)
 
 Features:
