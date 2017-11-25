@@ -1,3 +1,9 @@
+## 1.2.1 (November 25, 2017)
+
+Improvements:
+
+  - Added support for Puppet 5.
+
 ## 1.2.0 (June 11, 2017)
 
 Improvements:
