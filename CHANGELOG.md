@@ -1,3 +1,9 @@
+## 1.2.2 (February 17, 2018)
+
+Improvements:
+
+  - Updated OS support matrix.
+
 ## 1.2.1 (November 25, 2017)
 
 Improvements:
