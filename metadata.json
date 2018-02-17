@@ -37,7 +37,36 @@
       ]
     },
     {
-      "operatingsystem": "Debian"
+      "operatingsystem": "Fedora",
+      "operatingsystemrelease": [
+        "21",
+        "22",
+        "23",
+        "24",
+        "25",
+        "26",
+        "27"
+      ]
+    },
+    {
+      "operatingsystem": "SLES",
+      "operatingsystemrelease": [
+        "11 SP1",
+        "11 SP2",
+        "11 SP3",
+        "11 SP4",
+        "12 SP1",
+        "12 SP2",
+        "12 SP3"
+      ]
+    },
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "7",
+        "8",
+        "9"
+      ]
     },
     {
       "operatingsystem": "Ubuntu",
@@ -47,7 +76,29 @@
         "15.10",
         "16.04",
         "16.10",
-        "17.04"
+        "17.04",
+        "17.10"
+      ]
+    },
+    {
+      "operatingsystem": "FreeBSD",
+      "operatingsystemrelease": [
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "operatingsystem": "DragonFly",
+      "operatingsystemrelease": [
+        "3.6",
+        "3.8",
+        "4.0",
+        "4.2",
+        "4.4",
+        "4.6",
+        "4.8",
+        "5.0"
       ]
     },
     {
