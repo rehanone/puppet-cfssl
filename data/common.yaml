@@ -1,0 +1,44 @@
+---
+cfssl::wget_manage: true
+cfssl::download_url: 'https://pkg.cfssl.org/R1.2'
+cfssl::download_dir: '/opt/cfssl'
+cfssl::install_dir: '/usr/local/bin'
+cfssl::conf_dir: '/etc/cfssl'
+cfssl::keys_dir: "%{hiera('cfssl::conf_dir')}/keys"
+cfssl::certs_dir: "%{hiera('cfssl::conf_dir')}/certs"
+
+cfssl::ca_manage: false
+cfssl::key_algo: 'rsa'
+cfssl::key_size: 4096
+cfssl::root_ca_id: 'ca'
+cfssl::root_ca_name: 'My Root CA'
+cfssl::root_ca_expire: '262800h' #30 years (24x356x30)
+cfssl::intermediate_ca_id: 'intermediate-ca'
+cfssl::intermediate_ca_name: 'My Intermediate CA'
+cfssl::intermediate_ca_expire: '42720h'
+cfssl::country: 'UK'
+cfssl::state: 'England'
+cfssl::city: 'Leeds'
+cfssl::organization: 'My Company'
+cfssl::org_unit: 'My Unit'
+
+cfssl::service_manage: "%{alias('cfssl::ca_manage')}"
+cfssl::service_ensure: 'running'
+cfssl::service_enable: true
+cfssl::service_name: 'cfssl'
+cfssl::service_address: '127.0.0.1'
+cfssl::service_port: 8888
+cfssl::service_user: 'root'
+cfssl::firewall_manage: false
+cfssl::allowed_networks:
+  - '127.0.0.0/8'
+cfssl::architecture: 'amd64'
+cfssl::binaries:
+  'cfssl-bundle': "cfssl-bundle_linux-%{hiera('cfssl::architecture')}"
+  'cfssl-certinfo': "cfssl-certinfo_linux-%{hiera('cfssl::architecture')}"
+  'cfssl-newkey': "cfssl-newkey_linux-%{hiera('cfssl::architecture')}"
+  'cfssl-scan': "cfssl-scan_linux-%{hiera('cfssl::architecture')}"
+  'cfssl': "cfssl_linux-%{hiera('cfssl::architecture')}"
+  'cfssljson': "cfssljson_linux-%{hiera('cfssl::architecture')}"
+  'mkbundle': "mkbundle_linux-%{hiera('cfssl::architecture')}"
+  'multirootca': "multirootca_linux-%{hiera('cfssl::architecture')}"
