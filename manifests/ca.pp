@@ -1,3 +1,5 @@
+# cfssl::ca
+#
 define cfssl::ca (
   String  $ensure       = present,
   String  $common_name  = $name,

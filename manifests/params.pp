@@ -1,4 +1,4 @@
-  # Class: cfssl::params
+# Class: cfssl::params
 #
 class cfssl::params {
   $wget_manage      = true

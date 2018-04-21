@@ -1,3 +1,5 @@
+# cfssl::install
+#
 class cfssl::install inherits cfssl {
 
   assert_private("Use of private class ${name} by ${caller_module_name}")

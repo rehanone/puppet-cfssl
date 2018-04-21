@@ -1,3 +1,5 @@
+# cfssl::certificate_request
+#
 define cfssl::certificate_request (
   Enum[ca, server, client] $profile,
   Array[String]            $hosts,
