@@ -1,3 +1,5 @@
+# cfssl::sign
+#
 define cfssl::sign (
   String  $ca_id,
   String  $csr_file,
