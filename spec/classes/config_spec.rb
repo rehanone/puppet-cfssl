@@ -22,7 +22,7 @@ describe 'cfssl' do
 
         it { is_expected.to have_resource_count(49) }
 
-        it { is_expected.to have_class_count(9) }
+        it { is_expected.to have_class_count(8) }
 
         it { is_expected.to have_cfssl__ca_resource_count(2) }
 
