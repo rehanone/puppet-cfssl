@@ -45,7 +45,7 @@ describe 'cfssl class:', unless: UNSUPPORTED_PLATFORMS.include?(fact('osfamily')
   end
 
   context 'service_ensure => running:' do
-    it 'runs successfully' do
+    it 'starts the service successfully' do
       pp = "class { 'cfssl':
        ca_manage => true,
        service_manage => true,
@@ -59,12 +59,22 @@ describe 'cfssl class:', unless: UNSUPPORTED_PLATFORMS.include?(fact('osfamily')
   end
 
   context 'service_ensure => stopped:' do
-    it 'runs successfully' do
+    it 'stops the service successfully' do
       pp = "class { 'cfssl':
        ca_manage => true,
        service_manage => true,
        service_ensure => stopped,
       }"
+
+      apply_manifest(pp, catch_failures: true) do |r|
+        expect(r.stderr).not_to match(%r{error}i)
+      end
+    end
+  end
+
+  context 'firewall_manage => true:' do
+    it 'runs successfully' do
+      pp = "class { 'cfssl': firewall_manage => true }"
 
       apply_manifest(pp, catch_failures: true) do |r|
         expect(r.stderr).not_to match(%r{error}i)
