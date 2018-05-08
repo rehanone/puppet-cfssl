@@ -2,7 +2,7 @@
 
 Improvements:
 
-  - Updated module to `pdk` compliant.
+  - Updated module to be `pdk` compliant.
   - Updated module data to `hiera 5`.
 
 ## 1.2.2 (February 17, 2018)
