@@ -1,3 +1,11 @@
+## 1.3.1 (May 8, 2018)
+
+Improvements:
+
+- Updated `pdk` templates.
+- Updated minimum required `puppet` version to `4.10.0`.
+- Improved acceptance tests.
+
 ## 1.3.0 (April 21, 2018)
 
 Improvements:
