@@ -1,6 +1,6 @@
 # rehan-cfssl
 
-[![Build Status](https://travis-ci.org/rehanone/puppet-cfssl.svg?branch=master)](https://travis-ci.org/rehanone/puppet-cfssl)
+[![Puppet Forge](http://img.shields.io/puppetforge/v/rehan/cfssl.svg)](https://forge.puppetlabs.com/rehan/cfssl) [![Build Status](https://travis-ci.org/rehanone/puppet-cfssl.svg?branch=master)](https://travis-ci.org/rehanone/puppet-cfssl)
 
 #### Table of Contents
 1. [Overview](#overview)
@@ -36,7 +36,7 @@ more information on it is available at:
 ## Setup
 In order to install `rehan-cfssl`, run the following command:
 ```bash
-$ sudo puppet module install rehan-cfssl
+$ puppet module install rehan-cfssl
 ```
 The module does expect all the data to be provided through 'Hiera'. See [Usage](#usage) for examples on how to configure it.
 
