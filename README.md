@@ -98,7 +98,6 @@ All of this data can be provided through `Hiera`.
 
 **YAML**
 ```yaml
----
 cfssl::ca_manage: true
 cfssl::root_ca_name: 'Root Authority X1'
 cfssl::intermediate_ca_name: "Intermediate Authority X2"
@@ -123,7 +122,6 @@ cfssl::allowed_networks:
 
 **YAML**
 ```yaml
----
 cfssl::ca_manage: false
 cfssl::requests:
   'example.com':
@@ -178,5 +176,5 @@ cfssl::certificate_request { 'example.com':
 
 ## Development
 
-You can submit pull requests and create issues through the official page of this module: https://github.com/rehan/puppet-cfssl.
+You can submit pull requests and create issues through the official page of this module on [GitHub](https://github.com/rehan/puppet-cfssl).
 Please do report any bug and suggest new features/improvements.
