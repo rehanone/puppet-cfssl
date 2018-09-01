@@ -28,13 +28,15 @@ appveyor.yml:
 
   script: "\"bundle exec rake release_checks\""
   docker_sets:
+  - set: docker/ubuntu-18.04
   - set: docker/ubuntu-16.04
   - set: docker/ubuntu-14.04
+#  - set: docker/debian-9
   - set: docker/debian-8
   - set: docker/centos-7
   docker_defaults:
     # values will replace @@SET@@ with the docker_sets' value
-    rvm: 2.4.1
+    rvm: 2.4.4
     sudo: required
     dist: trusty
     services: docker
@@ -85,5 +87,7 @@ spec/acceptance/nodesets/debian-8-x64.yml:
 spec/acceptance/nodesets/default.yml:
 spec/acceptance/nodesets/docker/centos-7.yml:
 spec/acceptance/nodesets/docker/debian-8.yml:
+spec/acceptance/nodesets/docker/debian-9.yml:
 spec/acceptance/nodesets/docker/ubuntu-14.04.yml:
 spec/acceptance/nodesets/docker/ubuntu-16.04.yml:
+spec/acceptance/nodesets/docker/ubuntu-18.04.yml:

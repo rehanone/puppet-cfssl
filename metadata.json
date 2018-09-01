@@ -10,7 +10,7 @@
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
-      "version_requirement": ">= 4.0.0 < 5.0.0"
+      "version_requirement": ">= 4.0.0 < 6.0.0"
     },
     {
       "name": "rehan-wget",
@@ -66,7 +66,6 @@
     {
       "operatingsystem": "Debian",
       "operatingsystemrelease": [
-        "7",
         "8",
         "9"
       ]
@@ -122,7 +121,7 @@
     "Public Key Infrastructure",
     "Certificate Managment"
   ],
-  "pdk-version": "1.5.0",
+  "pdk-version": "1.7.0",
   "template-url": "file:///opt/puppetlabs/pdk/share/cache/pdk-templates.git",
-  "template-ref": "1.5.0-0-gd1b3eca"
+  "template-ref": "1.7.0-0-g57412ed"
 }
