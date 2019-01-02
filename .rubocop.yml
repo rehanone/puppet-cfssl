@@ -16,6 +16,7 @@ AllCops:
   - "**/Puppetfile"
   - "**/Vagrantfile"
   - "**/Guardfile"
+  - Vagrantfile
 Metrics/LineLength:
   Description: People have wide screens, use them.
   Max: 200

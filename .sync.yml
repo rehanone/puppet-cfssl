@@ -1,18 +1,14 @@
 ---
-appveyor.yml:
-  environment:
-  PUPPET_GEM_VERSION: "~> 4.0"
-  matrix:
-    - RUBY_VERSION: 24-x64
-      CHECK: "syntax lint"
-    - RUBY_VERSION: 24-x64
-      CHECK: metadata_lint
-    - RUBY_VERSION: 24-x64
-      CHECK: rubocop
-
 .rubocop.yml:
   selected_profile: strict
   default_configs: &default_configs
+    AllCops:
+      DisplayCopNames: true
+      TargetRubyVersion: '2.1'
+      Include:
+        - "./**/*.rb"
+      Exclude:
+        - Vagrantfile
     Style/UnneededPercentQ:
       Enabled: false
 
@@ -24,24 +20,14 @@ appveyor.yml:
 
 .travis.yml:
   bundler_args: ""
-  branches: {}
-
-  script: "\"bundle exec rake release_checks\""
   docker_sets:
-  - set: docker/ubuntu-18.04
-  - set: docker/ubuntu-16.04
-  - set: docker/ubuntu-14.04
-#  - set: docker/debian-9
-  - set: docker/debian-8
-  - set: docker/centos-7
+    - set: docker/ubuntu-18.04
+    - set: docker/ubuntu-16.04
+    - set: docker/ubuntu-14.04
+#    - set: docker/debian-9
+    - set: docker/debian-8
+    - set: docker/centos-7
   docker_defaults:
-    # values will replace @@SET@@ with the docker_sets' value
-    rvm: 2.5.0
-    sudo: required
-    dist: trusty
-    services: docker
-    env: PUPPET_INSTALL_TYPE=agent BEAKER_debug=true BEAKER_set=@@SET@@
-    script: bundle exec rake beaker
 
 Gemfile:
   required:
@@ -53,17 +39,6 @@ Gemfile:
           - mswin
           - mingw
           - x64_mingw
-      - gem: beaker
-        version: '~> 3.13'
-        from_env: BEAKER_VERSION
-      - gem: beaker-abs
-        from_env: BEAKER_ABS_VERSION
-        version: '~> 0.1'
-      - gem: beaker-pe
-      - gem: beaker-hostgenerator
-        from_env: BEAKER_HOSTGENERATOR_VERSION
-      - gem: beaker-rspec
-        from_env: BEAKER_RSPEC_VERSION
 
 spec/spec.opts:
   delete: true
